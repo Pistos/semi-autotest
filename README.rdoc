@@ -1,0 +1,90 @@
+= Semi-Autotest
+
+== DESCRIPTION
+
+Semi-Autotest allows you to rapidly repeat a test or set of tests without waiting
+for test preparation time before each test run.
+
+== SYNOPSIS
+
+Given an rspec file like:
+
+  # thing_spec.rb
+  require 'semi-autotest'
+  require 'thing'
+
+  describe 'The thing under test' do
+    it 'should do something' do
+      SemiAutoTest.repeat_from_here
+      Thing.do_something.should == "success"
+    end
+  end
+
+Run one particular spec:
+
+  # rspec -e 'thing under test' spec/thing_spec.rb
+  semi>
+
+Press Enter to run the spec once:
+
+  semi>
+  .
+
+  Finished in 0.45392 seconds
+  1 example, 0 failures
+  semi>
+
+Start watching the code under test with the "w" command (tab completion supported):
+
+  semi> w lib/thing.rb
+  semi>
+
+Edit the code under test, and introduce a bug.  Rerun the spec by pressing Enter:
+
+  semi>
+  F
+
+  Failures:
+
+    1) The thing under test should do something
+      Failure/Error: Thing.do_something.should == "success"
+        expected: "success"
+             got: "failure" (using ==)
+      # ./sample/spec/thing_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+  Finished in 80.54 seconds
+  1 example, 1 failure
+
+  Failed examples:
+
+  rspec ./sample/spec/thing_spec.rb:6 # The thing under test should do something
+  semi>
+
+List watched files with the "l" command:
+
+  semi> l
+  ["lib/thing.rb"]
+  semi>
+
+Stop watching files with the "u" command:
+
+  semi> u lib/thing.rb
+  semi>
+
+Quit with the "q" command, or pressing ^D on an empty input line.
+
+== LICENCE
+
+Semi-Autotest is licensed under the MIT Licence.  See the LICENCE file.
+
+== CONTACT
+
+The source code repository is at http://github.com/Pistos/semi-autotest .
+
+Send comments, feedback and tech support requests to the #mathetes channel on
+the FreeNode IRC network ( http://webchat.freenode.net/?channels=mathetes ).
+Reproducible issues may be reported at
+https://github.com/Pistos/semi-autotest/issues .
+
+
+Pistos
