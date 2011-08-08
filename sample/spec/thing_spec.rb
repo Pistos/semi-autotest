@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-require_relative '../lib/thing.rb'
+require 'thing'
 
 describe 'The thing under test' do
   before :each do
