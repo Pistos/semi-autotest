@@ -1,4 +1,5 @@
 require 'pp'
+require 'readline'
 
 module SemiAutoTest
   def self.files_reloadable
@@ -16,15 +17,12 @@ module SemiAutoTest
   end
 
   def self.repeat_from_here
-    loop do
-      $stdout.print "semi> "; $stdout.flush
-      input = $stdin.gets
-      if input
-        command = input.strip
-      end
+    while input = Readline.readline( 'semi> ', true )
+      break  if input.nil?
+      command = input.strip
 
       case command
-      when nil, /^q/i
+      when /^q/i
         break
       when /^l/i
         pp files_reloadable
@@ -43,7 +41,7 @@ module SemiAutoTest
           break
         end
       else
-        puts "Unknown command: #{command.inspect}"
+        puts "Unknown or ill-formatted command: #{command.inspect}"
       end
     end
   end
