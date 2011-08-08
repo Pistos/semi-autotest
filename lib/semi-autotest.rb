@@ -1,9 +1,10 @@
 require 'pp'
+require 'set'
 require 'readline'
 
 module SemiAutoTest
   def self.files_reloadable
-    @files_reloadable ||= Array.new
+    @files_reloadable ||= Set.new
   end
 
   def self.reload_changed_files
@@ -18,14 +19,14 @@ module SemiAutoTest
 
   def self.repeat_from_here
     while input = Readline.readline( 'semi> ', true )
-      break  if input.nil?
+      exit!  if input.nil?
       command = input.strip
 
       case command
       when /^q/i
-        break
+        exit!
       when /^l/i
-        pp files_reloadable
+        pp files_reloadable.to_a
       when /^w(?:\S*) +(\S+)/i
         files_reloadable << $1
       when /^u(?:\S*) +(\S+)/i

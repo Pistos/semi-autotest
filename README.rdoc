@@ -39,6 +39,11 @@ Start watching the code under test with the "w" command (tab completion supporte
   semi> w lib/thing.rb
   semi>
 
+You could also accomplish the same thing with a line like this in your test code
+(before calling #repeat_from_here):
+
+  SemiAutoTest.files_reloadable << 'lib/thing.rb'
+
 Edit the code under test, and introduce a bug.  Rerun the spec by pressing Enter:
 
   semi>
