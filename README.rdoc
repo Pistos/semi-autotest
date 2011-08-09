@@ -76,7 +76,26 @@ Stop watching files with the "u" command:
   semi> u lib/thing.rb
   semi>
 
-Quit with the "q" command, or pressing ^D on an empty input line.
+Quit with the "q" command, or pressing ^D on an empty input line.  To continue
+running until finished (and then quit afterwards), use the "c" command.
+
+== CAVEAT
+
+Special care needs to be taken if you have tests that have cleanup or teardown
+which have lasting effects, such as closure of handles (file, database, socket,
+etc.) or persistence of data.  If you encounter problems related to this,
+experiment with different places from which to call #repeat_from_here -- it
+often helps to call #repeat_from_here in a sooner/higher location in your spec,
+and from within a "before :all" block.
+
+When using a browser driver in your tests, it may be helpful to have a little
+no-op broswer spec earlier than your actual spec.  The purpose of this is to
+open the browser before the spec of interest runs, and to keep the browser open
+for further runs.  Example no-op spec:
+
+  it 'should open the browser' do
+    visit '/'
+  end
 
 == LICENCE
 

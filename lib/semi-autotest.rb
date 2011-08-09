@@ -25,6 +25,8 @@ module SemiAutoTest
       case command
       when /^q/i
         exit!
+      when /^c/i
+        break
       when /^l/i
         pp files_reloadable.to_a
       when /^w(?:\S*) +(\S+)/i
