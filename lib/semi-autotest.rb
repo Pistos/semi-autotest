@@ -18,9 +18,8 @@ module SemiAutoTest
   end
 
   def self.repeat_from_here
-    while input = Readline.readline( 'semi> ', true )
-      exit!  if input.nil?
-      command = input.strip
+    while command = Readline.readline( 'semi> ', true )
+      exit!  if command.nil?
 
       case command
       when /^q/i
