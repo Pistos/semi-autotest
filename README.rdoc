@@ -1,8 +1,8 @@
-= Semi-Autotest
+= Semi-AutoTest
 
 == DESCRIPTION
 
-Semi-Autotest allows you to rapidly repeat a test or set of tests without waiting
+Semi-AutoTest allows you to rapidly repeat a test or set of tests without waiting
 for test preparation time before each test run.
 
 == SYNOPSIS
@@ -80,7 +80,7 @@ Quit with the "q" command, or pressing ^D on an empty input line.
 
 == LICENCE
 
-Semi-Autotest is licensed under the MIT Licence.  See the LICENCE file.
+Semi-AutoTest is licensed under the MIT Licence.  See the LICENCE file.
 
 == CONTACT
 
