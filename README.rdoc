@@ -76,8 +76,9 @@ Stop watching files with the "u" command:
   semi> u lib/thing.rb
   semi>
 
-Quit with the "q" command.  To continue running until finished (and then quit
-afterwards), use the "c" command.
+Quit with the "q" command, or by pressing ^D on a blank input line.  To
+continue running until finished (and then quit afterwards), use the "c"
+command.
 
 == CAVEAT
 

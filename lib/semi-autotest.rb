@@ -19,8 +19,6 @@ module SemiAutoTest
 
   def self.repeat_from_here
     while command = Readline.readline( 'semi> ', true )
-      exit!  if command.nil?
-
       case command
       when /^q/i
         exit!
@@ -46,5 +44,7 @@ module SemiAutoTest
         puts "Unknown or ill-formatted command: #{command.inspect}"
       end
     end
+
+    exit!  if command.nil?
   end
 end
